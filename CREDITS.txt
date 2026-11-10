@@ -1,0 +1,37 @@
+CAGED Interval Trainer – Credits and Licenses
+=============================================
+
+Guitar samples
+--------------
+Source:   "tonejs-instruments" sample library, instrument "guitar-acoustic"
+          by N. P. Brosowsky
+          https://github.com/nbrosowsky/tonejs-instruments
+License:  Creative Commons Attribution 3.0 (CC BY 3.0)
+          https://creativecommons.org/licenses/by/3.0/
+Origin:   The acoustic guitar recordings originate from the University of
+          Iowa Electronic Music Studios, Musical Instrument Samples
+          http://theremin.music.uiowa.edu/
+          (as stated in "sample-source-info.txt" of the repository above).
+Changes:  The 22 notes D2 to B3 (one file per semitone) are used as
+          provided by the library. In this app they are faded out shortly
+          after playback starts. No other modification.
+          The original authors do not endorse this app.
+
+Code
+----
+The code of this app was written for this project. It does not contain
+code from Tone.js or from the tonejs-instruments library.
+(tonejs-instruments code: MIT License; Tone.js: MIT License.)
+
+Disclaimer
+----------
+This app is provided "as is", without warranty of any kind, express or
+implied. It is a free practice tool; use it at your own risk. The authors
+are not liable for any damages arising from its use.
+
+Privacy
+-------
+The app stores your settings and statistics only in your own browser
+(localStorage). It sends no data anywhere and uses no tracking.
+
+(c) 2026 [Your name]
