@@ -61,11 +61,11 @@ header{display:flex;align-items:center;gap:11px;margin-bottom:12px}
 .big{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;z-index:5;font-weight:900;font-size:clamp(34px,min(15vw,24vh),96px);white-space:nowrap;line-height:1;color:var(--root);text-shadow:0 0 40px #c8a6ffcc,0 0 90px #8f5cff;animation:zoom 1.3s linear forwards}
 @keyframes zoom{0%{transform:scale(.35);opacity:0;filter:blur(6px)}25%{transform:scale(.95);opacity:1;filter:blur(0)}60%{transform:scale(1.5);opacity:.8;filter:blur(2px)}100%{transform:scale(2.5);opacity:0;filter:blur(10px)}}
 .board{background:linear-gradient(100deg,#2c2157,#1a1338);border:1px solid #4d3d93;border-radius:16px;padding:10px 10px 10px 6px;box-shadow:inset 0 0 30px #0b0620}
-#board{display:grid;grid-template-columns:26px repeat(5,minmax(0,1fr));grid-template-rows:repeat(6,var(--row))}
-.sl{display:flex;align-items:center;justify-content:center;font-weight:800;font-size:clamp(15px,calc(var(--row)*.36),22px);color:#a095d6}
+#board{display:grid;grid-template-columns:32px repeat(5,minmax(0,1fr));grid-template-rows:repeat(6,var(--row))}
+.sl{display:flex;align-items:center;justify-content:center;font-weight:800;font-size:clamp(17px,calc(var(--row)*.42),26px);color:#a095d6}.sl.lo{font-size:clamp(23px,calc(var(--row)*.56),34px);transform:translateY(-.11em)}
 .sl.on{color:#d9ccff}.sl.rl{color:var(--root);text-shadow:0 0 10px var(--root)}
 .cell{position:relative;display:flex;align-items:center;justify-content:center;}
-.cell:before{content:"";position:absolute;right:0;top:0;bottom:0;width:2px;background:#8478b4;z-index:1;pointer-events:none}.cell:not(.on):before{opacity:.3}.cell:not(.on):after{opacity:.38}.cell.last:before{width:3px;background:#cfc6ee}.cell.last:not(.on):before{opacity:.33}
+.cell:before{content:"";position:absolute;right:0;top:0;bottom:0;width:2px;background:#8478b4;z-index:1;pointer-events:none}.cell:not(.on):before{opacity:.3}.cell:not(.on):after{opacity:.38}.cell.last:before{width:3px;background:#cfc6ee}.cell.last:not(.on):before{opacity:.33}.cell.fade:before,.cell.fade.last:before{opacity:1;background:linear-gradient(to top,#8478b4,#8478b44d)}.cell.fade.last:before{background:linear-gradient(to top,#cfc6ee,#cfc6ee55)}
 .gl{position:absolute;left:50%;top:50%;width:var(--d);height:var(--d);margin:calc(var(--d)/-2) 0 0 calc(var(--d)/-2);border-radius:50%;z-index:0;pointer-events:none}
 .gl.rg{animation:pulse2 2.4s infinite}.gl.rg.gd{box-shadow:0 0 18px var(--good);animation:none}.gl.gg{box-shadow:0 0 14px 3px #c8a6ff88;animation:glowin 1.2s ease-out forwards,gfade 1.2s ease-in-out forwards}@keyframes gfade{0%{opacity:0}18%{opacity:1}55%{opacity:1}100%{opacity:0}}@keyframes gfade2{0%,55%{opacity:1}100%{opacity:0}}.blank.ghost:before,.blank.ghost:after,.gdot{animation:gfade 1.2s ease-in-out forwards}.dot.good:not(.root){animation:pop .35s,gfade2 1.2s linear forwards}@keyframes glowin{0%{box-shadow:0 0 0 0 #c8a6ff00}30%{box-shadow:0 0 24px 7px #c8a6ffcc}100%{box-shadow:0 0 14px 3px #c8a6ff88}}
 @keyframes pulse2{0%{box-shadow:0 0 0 0 #c8a6ffaa,0 0 18px #b58cff99}100%{box-shadow:0 0 0 16px #c8a6ff00,0 0 18px #b58cff99}}
@@ -106,8 +106,8 @@ h4{margin:16px 0 8px;font-size:14px}
 #heat{display:grid;grid-template-columns:24px repeat(7,1fr);gap:4px;align-items:center;font-size:12px;color:var(--muted);text-align:center}
 #heat i{display:block;height:28px;border-radius:8px;text-align:center;line-height:28px;font-style:normal}.hl{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted);margin-top:8px}.hl i{flex:1;height:6px;border-radius:6px;background:linear-gradient(90deg,#9b6bff,#5aa8ff,#35e0c8)}.hl span:first-child{color:#b58cff;font-weight:700}.hl span:last-child{color:#35e0c8;font-weight:700}
 @media(min-width:760px){.sheet{align-items:center}.sh{border-radius:24px}}
-@media(orientation:landscape) and (max-height:600px){.layout{grid-template-columns:minmax(230px,.75fr) minmax(0,1.6fr)}.sheet{align-items:center}.sh{border-radius:24px}.bar{display:none}.step{min-height:clamp(48px,14vh,120px);font-size:clamp(22px,5.4vh,42px)}:root{--d:calc(var(--row)*.82)}}
-@media(min-width:900px) and (min-height:601px){.app{max-width:1180px}:root{--row:clamp(34px,calc((100dvh - 430px)/6),78px);--d:calc(var(--row)*.78)}header{margin-bottom:8px}.legend{margin-top:6px}.task{display:grid;grid-template-columns:minmax(300px,.8fr) minmax(0,1.6fr);column-gap:24px;row-gap:8px;align-items:center}.task .strip{grid-column:1;grid-row:1}.task .row{grid-column:1;grid-row:2}.task .strip{flex-wrap:wrap}.task .strip .acc{flex:1 1 100%;order:3}.task .strip i{height:8px}.task #seq{grid-column:2;grid-row:1/3;align-self:stretch;grid-auto-rows:1fr;margin:0}.task .bar{display:none}.step{font-size:44px}}
+@media(orientation:landscape) and (max-height:600px){.layout{grid-template-columns:minmax(230px,.75fr) minmax(0,1.6fr)}.sheet{align-items:center}.sh{border-radius:24px}.step{min-height:clamp(48px,14vh,120px);font-size:clamp(22px,5.4vh,42px)}:root{--d:calc(var(--row)*.82)}}
+@media(min-width:900px) and (min-height:601px){.app{max-width:1180px}:root{--row:clamp(34px,calc((100dvh - 430px)/6),78px);--d:calc(var(--row)*.78)}header{margin-bottom:8px}.legend{margin-top:6px}.task{display:grid;grid-template-columns:minmax(300px,.8fr) minmax(0,1.6fr);column-gap:24px;row-gap:8px;align-items:center}.task .strip{grid-column:1;grid-row:1}.task .row{grid-column:1;grid-row:2}.task .strip{flex-wrap:wrap}.task .strip .acc{flex:1 1 100%;order:3}.task .strip i{height:8px}.task #seq{grid-column:2;grid-row:1/3;align-self:stretch;grid-auto-rows:1fr;margin:0}.task .bar{grid-column:1/-1;grid-row:3}.step{font-size:44px}}
 
 @media(orientation:landscape) and (max-height:600px){
 :root{--row:clamp(24px,calc((100dvh - 118px)/6),66px);--d:calc(var(--row)*.86)}
@@ -120,7 +120,7 @@ header{margin-bottom:6px}.logo,.ib{width:34px;height:34px}.brand{font-size:17px}
 .sh{max-height:96dvh;width:min(100%,820px)}.fgs{display:grid;grid-template-columns:repeat(3,1fr);gap:0 14px}.sh label{margin:8px 0 4px}.tg .check{padding:7px 12px}}
 @media(max-height:420px) and (orientation:landscape){.legend{display:none}.hint.h2{display:none}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
-.credit{font-size:11px;line-height:1.5;margin:12px 0 0;color:var(--muted)}.credit a{color:var(--root)}
+.credit{font-size:11px;line-height:1.5;margin:12px 0 0;color:var(--muted)}.credit a{color:var(--root)}.credit .cdot{color:var(--root2);font-size:13px}
 </style>
 </head>
 <body>
@@ -163,7 +163,7 @@ header{margin-bottom:6px}.logo,.ib{width:34px;height:34px}.brand{font-size:17px}
     <label class="check"><input type="checkbox" id="ghostOn" checked>Chord shapes</label>
     <label class="check"><input type="checkbox" id="adaptive">Drill weak spots</label>
   </div>
-<p class="hint credit">Guitar samples: <a href="https://github.com/nbrosowsky/tonejs-instruments" target="_blank" rel="noopener">tonejs-instruments</a> by N.&nbsp;P. Brosowsky, <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC&nbsp;BY&nbsp;3.0</a> Recordings: <a href="http://theremin.music.uiowa.edu/" target="_blank" rel="noopener">University of Iowa Musical Instrument Samples</a>. Faded out at playback.</p>
+<p class="hint credit">Guitar samples: <a href="https://github.com/nbrosowsky/tonejs-instruments" target="_blank" rel="noopener">tonejs-instruments</a> by N.&nbsp;P. Brosowsky (<a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC&nbsp;BY&nbsp;3.0</a>) <span class="cdot">&bull;</span> Recordings: <a href="http://theremin.music.uiowa.edu/" target="_blank" rel="noopener">University of Iowa Musical Instrument Samples</a></p>
 </div></div>
 
 <div class="sheet" id="stats" hidden><div class="sh">
@@ -324,9 +324,9 @@ function board(){
  const b=$("board"),sh=shapes[shapeKey];b.innerHTML="";const gs=ghost?chordCells(sh,ghost,shapeKey):null;const pk=new Map();if(peek){Object.entries(sh.canonical).forEach(([n,c])=>pk.set(c[0]+","+c[1],{n:+n}));sh.alts.forEach(a=>{const k=a[0]+","+a[1];if(!pk.has(k))pk.set(k,{n:a[2],alt:1})})}
  S.forEach((s,si)=>{
   const on=ACT.includes(s),l=document.createElement("div");
-  l.className="sl"+(on?" on":"")+(si===sh.root[0]?" rl":"");l.textContent=s;b.append(l);
+  l.className="sl"+(on?" on":"")+(si===sh.root[0]?" rl":"")+(s==="e"?" lo":"");l.textContent=s;b.append(l);
   for(let c=0;c<5;c++){
-   const cell=document.createElement("div");cell.className="cell"+(on?" on":"")+(c===4?" last":"");cell.style.setProperty("--t",TH[si]+"px");
+   const cell=document.createElement("div");cell.className="cell"+(on?" on":"")+(c===4?" last":"")+(s==="G"?" fade":"");cell.style.setProperty("--t",TH[si]+"px");
    if(on){
     const btn=document.createElement("button"),isRoot=sh.root[0]===si&&sh.root[1]===c,rc=isRoot?" root":"";
     let cls="blank",txt="";
